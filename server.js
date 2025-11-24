@@ -29,7 +29,7 @@ let transporter = nodemailer.createTransport({
 app.get('/', (req, res) => {
     // Aqui você pode servir seu arquivo index.html,
     // ou apenas enviar uma mensagem.
-    res.send('O servidor está ativo! Envie dados via POST para /send-email.');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Rota POST para receber os dados do formulário
