@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const app = express();
 const port = 3000;
 
 // Configuração do Express para aceitar dados do formulário
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '/')));
 
 // Permite que seu frontend se conecte (CORS) - **IMPORTANTE PARA TESTE**
 app.use((req, res, next) => {
@@ -25,12 +27,6 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-// Adicione esta rota no seu server.js
-app.get('/', (req, res) => {
-    // Aqui você pode servir seu arquivo index.html,
-    // ou apenas enviar uma mensagem.
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // Rota POST para receber os dados do formulário
 app.post('/send-email', (req, res) => {
@@ -45,7 +41,7 @@ app.post('/send-email', (req, res) => {
     // 2. Montar as opções do e-mail
     let mailOptions = {
         from: `"${name}" <mr.boceta333@gmail.com>`, // precisa ser a conta autenticada no Gmail
-        bcc: 'gabrielviniciusdecs@gmail.com', // **SEU EMAIL (Onde você quer receber a mensagem)**
+        to: 'gabrielviniciusdecs@gmail.com', // **SEU EMAIL (Onde você quer receber a mensagem)**
         replyTo: email, // responderá para o e-mail informado pelo usuário
         subject: `Nova mensagem de contato de: ${name}`,
         text: `Remetente: ${email}\n\nMensagem:\n${mensagem}`
