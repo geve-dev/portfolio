@@ -11,7 +11,12 @@ app.use(bodyParser.json());
 
 // Permite que seu frontend se conecte (CORS) - **IMPORTANTE PARA TESTE**
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Mude '*' para o seu domínio em produção
+    // Permite requisições do seu domínio na Vercel e de previews
+    const allowedOrigins = ['https://portfolio-geve-dev.vercel.app', process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.header('Access-Control-Allow-Methods', 'POST, GET');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
