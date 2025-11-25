@@ -8,7 +8,6 @@ const port = 3000;
 // Configuração do Express para aceitar dados do formulário
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '/')));
 
 // Permite que seu frontend se conecte (CORS) - **IMPORTANTE PARA TESTE**
 app.use((req, res, next) => {
