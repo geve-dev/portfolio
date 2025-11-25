@@ -3,11 +3,15 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Configuração do Express para aceitar dados do formulário
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Servir arquivos estáticos da pasta 'public'
+// Seus arquivos HTML, CSS e JS devem estar dentro de uma pasta chamada 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Permite que seu frontend se conecte (CORS) - **IMPORTANTE PARA TESTE**
 app.use((req, res, next) => {
@@ -31,6 +35,11 @@ let transporter = nodemailer.createTransport({
     }
 });
 
+// Rota GET para a página inicial, servindo o index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 // Rota POST para receber os dados do formulário
 app.post('/send-email', (req, res) => {
@@ -44,7 +53,7 @@ app.post('/send-email', (req, res) => {
 
     // 2. Montar as opções do e-mail
     let mailOptions = {
-        from: `"${name}" <mr.boceta333@gmail.com>`, // precisa ser a conta autenticada no Gmail
+        from: `"${name}" <${process.env.EMAIL_USER}>`, // O 'from' deve ser o email autenticado
         to: 'gabrielviniciusdecs@gmail.com', // **SEU EMAIL (Onde você quer receber a mensagem)**
         replyTo: email, // responderá para o e-mail informado pelo usuário
         subject: `Nova mensagem de contato de: ${name}`,
@@ -61,6 +70,11 @@ app.post('/send-email', (req, res) => {
             res.status(200).send('Mensagem enviada com sucesso! Obrigado.');
         }
     });
+});
+
+// Inicia o servidor localmente (não é usado pela Vercel, mas bom para testes)
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
 
 // Exporta o app para a Vercel
