@@ -28,6 +28,7 @@
     margin-bottom: 50px;
     width: 70%;
     height: auto;
+    perspective: 800px;
 }
 
 .skill {
@@ -43,7 +44,9 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 150ms ease, box-shadow 150ms ease;
+    transform-style: preserve-3d;
+    will-change: transform;
   }
   
   /* Glow animado*/
@@ -70,7 +73,6 @@
   
   /* Hover */
   .skill:hover {
-    transform: translateY(-5px);
     box-shadow: 0 0 20px var(--brand-glow);
   }
 
@@ -124,3 +126,15 @@
 
 /* Figma */
 .skill:nth-child(9) { --brand-glow: #aa7fee; }
+
+
+.sombra {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    box-shadow: 0 0 100px 400px var(--shadow-dark);
+    margin-top: 750px;
+    z-index: -1;
+}
+

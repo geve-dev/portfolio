@@ -16,6 +16,7 @@
 
     --surface-color: #0d0d0d;
     --surface-opacity:  #2424243f;
+    --surface-clear:  #3939393f;
     --surface-gradient: linear-gradient(45deg,
     #111 0%,
     #333 25%,
@@ -48,11 +49,30 @@
 body {
     font: var(--md);
     color: var(--text-color-secondary);
-    background-color: var(--master-white);
-    background-image: url('assets/imgs/banner (1).mp4');
+    background-color: var(--master-black);
+    /* background-image: url('assets/imgs/banner.mp4'); */
     overflow-x: hidden;
 }
 
 html{
     scroll-behavior: smooth;
 }
+
+/* Scroll reveal utility classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 600ms ease, transform 600ms ease;
+    will-change: opacity, transform;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: allow delay via CSS variable */
+.reveal[data-delay] { 
+    transition-delay: var(--delay, 0ms);
+}
+

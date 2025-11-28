@@ -44,7 +44,7 @@
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="about reveal">
      <div class="border">
         <h2>Sobre <span>mim</span></h2>
         <div class="about-container">
@@ -63,7 +63,7 @@
         </div>
     </div>
     </section>
-    <section id="projects" class="projects">
+    <section id="projects" class="projects reveal">
         <h2>Projetos <span>realizados</span></h2>
         <div class="cards">
             <div class="card">
@@ -124,7 +124,7 @@
         <div class="sombra"></div>
     </section>
 
-    <section id="skills" class="skills">
+    <section id="skills" class="skills reveal">
         <h2>Minhas <span>habilidades</span></h2>
         <div class="skills-container">
             <div class="skill">
@@ -164,15 +164,16 @@
                 <h3>Figma</h3>
             </div>
         </div>
+        <div class="sombra"></div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact reveal">
         <div class="glitch-form-wrapper">
             <form 
                 class="glitch-card" 
                 id="contact-form"
                 method="POST" 
-                action="/send-email">
+                action="http://localhost:3000/send-email">
                 <div class="card-header">
                     <div class="card-title">
                         <h2>Entre em <span>contato</span></h2>
@@ -220,6 +221,15 @@
             <p class="footer-bio">
               Desenvolvedor Web focado em interfaces modernas e experiência do usuário.
             </p>
+          </section>
+  
+          <section class="footer-contact">
+            <h3>Contato</h3>
+            <ul>
+              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:gabrielviniciusdecs@gmail.com">gabrielviniciusdecs@gmail.com</a></li>
+              <li><i class="fa-solid fa-location-dot"></i> Brasil</li>
+            </ul>
+            
             <div class="footer-social">
               <a href="https://www.instagram.com/gabzz.vnc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i class="fa-brands fa-instagram"></i>
@@ -232,14 +242,6 @@
               </a>
             </div>
           </section>
-  
-          <section class="footer-contact">
-            <h3>Contato</h3>
-            <ul>
-              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:gabrielviniciusdecs@gmail.com">gabrielviniciusdecs@gmail.com</a></li>
-              <li><i class="fa-solid fa-location-dot"></i> Brasil</li>
-            </ul>
-          </section>
         </div>
   
         <div class="footer-bottom">
@@ -249,3 +251,4 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
