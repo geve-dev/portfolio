@@ -80,8 +80,7 @@
 body {
     font-size: var(--text-md);
     color: var(--text-color-secondary);
-    background-color: var(--master-black);
-    background-image: url('assets/imgs/banner.mp4');
+    background-color: transparent;
     overflow-x: hidden;
 }
 
@@ -110,9 +109,10 @@ html {
 }
 
 @media screen and (max-width: 768px) {
-  input, 
-  textarea, 
-  select {
-    font-size: 16px !important;
-  }
+
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
 }

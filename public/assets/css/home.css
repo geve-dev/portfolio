@@ -4,6 +4,7 @@ video {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+    background-color: #000;
 }
 
 .light-theme video {
@@ -226,8 +227,4 @@ video {
         width: 300px;
         height: 300px;
     }
-
-    /* video {
-        display: none;
-    } */
 }
